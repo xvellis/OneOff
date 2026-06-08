@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="5" fill="#0d0d0d"/>
+  <!-- Barber pole stripes -->
+  <clipPath id="c"><rect x="13" y="4" width="6" height="24" rx="3"/></clipPath>
+  <rect x="13" y="4" width="6" height="24" rx="3" fill="#f0ead6" clip-path="url(#c)"/>
+  <rect x="13" y="4"  width="6" height="5" fill="#8b1a1a" clip-path="url(#c)"/>
+  <rect x="13" y="13" width="6" height="5" fill="#8b1a1a" clip-path="url(#c)"/>
+  <rect x="13" y="22" width="6" height="6" fill="#8b1a1a" clip-path="url(#c)"/>
+  <rect x="13" y="9"  width="6" height="4" fill="#1a3a6e" clip-path="url(#c)"/>
+  <rect x="13" y="18" width="6" height="4" fill="#1a3a6e" clip-path="url(#c)"/>
+  <!-- Pole caps -->
+  <rect x="12" y="3"  width="8" height="2" rx="1" fill="#c8a96e"/>
+  <rect x="12" y="27" width="8" height="2" rx="1" fill="#c8a96e"/>
+</svg>
