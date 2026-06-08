@@ -403,9 +403,9 @@ function Location() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.loc-content > *', { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1,
-          scrollTrigger: { trigger: ref.current, start: 'top 80%' } })
+      gsap.fromTo('.loc-col', { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.15,
+          scrollTrigger: { trigger: ref.current, start: 'top 75%' } })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -422,26 +422,26 @@ function Location() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
-          {/* Info card */}
-          <div className="loc-content lg:col-span-2 space-y-6 opacity-0">
-            <div className="card-dark p-6 rounded-sm">
-              <div className="flex items-start gap-4 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Left — address info */}
+          <div className="loc-col lg:col-span-2 space-y-4">
+            <div className="card-dark p-6 rounded-sm space-y-5">
+              <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-sm bg-gold/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={18} className="text-gold" />
                 </div>
                 <div>
-                  <p className="text-muted text-xs font-mono tracking-widest uppercase mb-1">Address</p>
+                  <p className="text-muted text-xs font-mono tracking-widest uppercase mb-1">Διεύθυνση</p>
                   <p className="text-cream font-body">{t.location.address}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 mb-4">
+              <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-sm bg-gold/10 flex items-center justify-center flex-shrink-0">
                   <Phone size={18} className="text-gold" />
                 </div>
                 <div>
-                  <p className="text-muted text-xs font-mono tracking-widest uppercase mb-1">Phone</p>
-                  <a href={`tel:${t.location.phone.replace(/\s/g,'')}`}
+                  <p className="text-muted text-xs font-mono tracking-widest uppercase mb-1">Τηλέφωνο</p>
+                  <a href={`tel:${t.location.phone.replace(/\s/g, '')}`}
                     className="text-cream font-body hover:text-gold transition-colors">
                     {t.location.phone}
                   </a>
@@ -460,7 +460,6 @@ function Location() {
                 </div>
               </div>
             </div>
-
             <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
               className="btn-gold w-full justify-center py-4 text-sm">
               <MapPin size={16} />
@@ -468,24 +467,24 @@ function Location() {
             </a>
           </div>
 
-          {/* Map embed */}
-          <div className="loc-content lg:col-span-3 opacity-0 relative rounded-sm overflow-hidden border border-white/5 min-h-[320px]">
-            <iframe
-              title="Map"
-              className="w-full h-full absolute inset-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={MAPS_EMBED}
-              style={{ filter: 'grayscale(0.6) contrast(1.1) brightness(0.8)', minHeight: '320px' }}
-            />
-            {/* Transparent click layer — opens Google Maps */}
+          {/* Right — map */}
+          <div className="loc-col lg:col-span-3">
+            <div className="rounded-sm overflow-hidden border border-white/5" style={{ height: '380px' }}>
+              <iframe
+                title="Χάρτης"
+                width="100%"
+                height="100%"
+                style={{ display: 'block', filter: 'grayscale(0.5) contrast(1.1) brightness(0.8)' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={MAPS_EMBED}
+              />
+            </div>
             <a href={MAPS_URL} target="_blank" rel="noopener noreferrer"
-              aria-label="Open in Google Maps"
-              className="absolute inset-0 flex items-end justify-end p-4 group">
-              <span className="btn-gold px-5 py-2.5 text-xs shadow-lg
-                translate-y-1 group-hover:translate-y-0 transition-transform">
-                <MapPin size={13} /> {t.location.cta}
-              </span>
+              className="mt-3 flex items-center justify-center gap-2 text-muted hover:text-gold
+                text-xs font-mono tracking-widest uppercase transition-colors py-2">
+              <MapPin size={12} />
+              {t.location.cta}
             </a>
           </div>
         </div>
